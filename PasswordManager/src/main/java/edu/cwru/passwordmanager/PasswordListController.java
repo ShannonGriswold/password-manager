@@ -10,9 +10,16 @@ import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.MouseEvent;
 
+import java.io.IOException;
 import java.net.URL;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
 import java.util.Optional;
 import java.util.ResourceBundle;
+
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
 
 public class PasswordListController implements Initializable {
     final private PasswordModel model = new PasswordModel();
@@ -85,7 +92,7 @@ public class PasswordListController implements Initializable {
     }
 
     @FXML
-    protected void deleteButtonClicked() {
+    protected void deleteButtonClicked() throws InvalidKeyException, NoSuchAlgorithmException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException, IOException {
         Alert alert = new Alert(Alert.AlertType.WARNING, "Are you sure you want to delete this password?", ButtonType.YES, ButtonType.NO);
         Optional<ButtonType> selected = alert.showAndWait();
         if (selected.isPresent() && selected.get().equals(ButtonType.YES)) {
@@ -95,7 +102,7 @@ public class PasswordListController implements Initializable {
     }
 
     @FXML
-    protected void saveButtonClicked() {
+    protected void saveButtonClicked() throws InvalidKeyException, NoSuchAlgorithmException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException, IOException {
         String label = passwordLabel.getText();
         String password = passwordField.getText();
 
@@ -105,7 +112,7 @@ public class PasswordListController implements Initializable {
     }
 
     @FXML
-    protected void addPassword() {
+    protected void addPassword() throws InvalidKeyException, NoSuchAlgorithmException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException, IOException {
         // Create new password and select last one, then load detail
         model.addPassword(new Password("New Password", ""));
         passwordListView.getSelectionModel().select(model.getPasswords().size() -1 );

@@ -2,6 +2,7 @@ package edu.cwru.passwordmanager;
 
 import atlantafx.base.theme.PrimerDark;
 import atlantafx.base.theme.PrimerLight;
+import atlantafx.base.theme.Dracula;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -11,13 +12,13 @@ import java.io.IOException;
 
 public class PasswordApplication extends Application {
     // TODO: Give your app a anme!
-    final private String applicationName = "My Password Manager";
+    final private String applicationName = "CyberHowl Password Manager";
     static Stage primaryStage = null;
     @Override
     public void start(Stage stage) throws IOException {
         // TODO: Select Preferred
         //  Application.setUserAgentStylesheet(new PrimerLight().getUserAgentStylesheet());
-        Application.setUserAgentStylesheet(new PrimerDark().getUserAgentStylesheet());
+        Application.setUserAgentStylesheet(new Dracula().getUserAgentStylesheet());
 
         FXMLLoader fxmlLoader = new FXMLLoader(PasswordApplication.class.getResource("initial-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 800, 600);
