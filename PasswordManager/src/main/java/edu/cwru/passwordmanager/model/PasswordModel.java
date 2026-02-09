@@ -1,3 +1,4 @@
+//Completed by Shannon Griswold and Mollie Ackerman
 package edu.cwru.passwordmanager.model;
 
 import javafx.collections.FXCollections;
